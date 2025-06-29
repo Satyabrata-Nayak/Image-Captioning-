@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
+from take_image import *
 import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
@@ -28,12 +29,13 @@ st.markdown(
 )
 
 # Upload image
-uploaded_image = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
+uploaded_image = image_input_try()
 
 # Process uploaded image
 if uploaded_image is not None:
-    st.subheader("Uploaded Image")
-    st.image(uploaded_image, caption="Uploaded Image", use_column_width=True)
+
+    # st.subheader("Uploaded Image")
+    # st.image(uploaded_image, caption="Uploaded Image", use_column_width=True)
 
     st.subheader("Generated Caption")
     # Display loading spinner while processing
